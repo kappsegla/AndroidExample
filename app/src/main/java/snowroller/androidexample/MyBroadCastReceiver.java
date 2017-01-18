@@ -12,6 +12,6 @@ public class MyBroadCastReceiver extends BroadcastReceiver {
     private static String TAG = "AndroidExample";
     @Override
     public void onReceive(Context context, Intent intent) {
-        Log.i(TAG, "BroadcastReceiver says hi!");
+        Log.i(TAG, "BroadcastReceiver says hi!" + intent.getAction());
     }
 }
