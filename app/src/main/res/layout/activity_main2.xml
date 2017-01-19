@@ -10,4 +10,13 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="snowroller.androidexample.Main2Activity">
 
+    <Button
+        android:text="Start new MainActivity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="189dp"
+        android:id="@+id/button2"
+        android:onClick="buttonClicked" />
 </RelativeLayout>
