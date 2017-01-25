@@ -78,6 +78,8 @@
         android:layout_marginStart="16dp"
         app:layout_constraintTop_toTopOf="@+id/button7"
         android:backgroundTint="@android:color/holo_orange_dark"
+        android:onClick="@{profile::rightButtonClicked}"
+        android:visibility="@{profile.loaded}"
         />
 
 
@@ -91,7 +93,7 @@
         app:layout_constraintGuide_percent="0.50364965" />
 
     <TextView
-        android:text="TEst"
+        android:text="@{profile.realName}"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textView5"
@@ -102,7 +104,7 @@
         app:layout_constraintTop_toTopOf="@+id/imageView" />
 
     <TextView
-        android:text="TextView"
+        android:text="@{profile.profileText}"
         android:layout_height="wrap_content"
         android:id="@+id/textView6"
         android:layout_marginTop="24dp"
@@ -121,11 +123,22 @@
         android:layout_height="wrap_content"
         android:id="@+id/progressBar"
         tools:visibility="visible"
-        android:visibility="invisible"
+        android:visibility="@{!profile.loaded}"
         app:layout_constraintLeft_toLeftOf="@+id/guideline3"
         app:layout_constraintTop_toTopOf="@+id/button7"
         android:layout_marginEnd="16dp"
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginStart="16dp" />
+
+    <CheckBox
+        android:text="CheckBox"
+        android:layout_width="113dp"
+        android:layout_height="29dp"
+        android:id="@+id/checkBox"
+        android:layout_marginTop="48dp"
+        app:layout_constraintTop_toBottomOf="@+id/button7"
+        android:layout_marginStart="48dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:checked="@={profile.online}"/>
 </android.support.constraint.ConstraintLayout>
     </layout>

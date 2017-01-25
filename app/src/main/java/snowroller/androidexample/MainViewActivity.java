@@ -9,7 +9,7 @@ import snowroller.androidexample.databinding.ActivityMainViewBinding;
 
 public class MainViewActivity extends AppCompatActivity {
 
-    private final ProfileViewModel profile = new ProfileViewModel("Stina");
+    private final ProfileViewModel profile = new ProfileViewModel("Grumpy Cat","Tardar Sauce");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
