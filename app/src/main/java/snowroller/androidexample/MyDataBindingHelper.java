@@ -1,12 +1,15 @@
+/*
 package snowroller.androidexample;
 
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
 import android.view.View;
 
+*/
 /**
  * Created by Martin on 2017-01-21.
- */
+ *//*
+
 
 public class MyDataBindingHelper extends BaseObservable {
     private String salutation;
@@ -33,3 +36,4 @@ public class MyDataBindingHelper extends BaseObservable {
         setMessage("Martin");
     }
 }
+*/
