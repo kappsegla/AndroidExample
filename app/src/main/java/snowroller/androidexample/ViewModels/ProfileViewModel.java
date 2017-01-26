@@ -22,6 +22,7 @@ import com.android.databinding.library.baseAdapters.BR;
 import java.util.ArrayList;
 
 import snowroller.androidexample.AndroidInfoAdapter;
+import snowroller.androidexample.R;
 
 /**
  * Created by Martin on 2017-01-25.
@@ -48,9 +49,6 @@ public class ProfileViewModel extends BaseObservable {
         this.profileText.set("Lorum ipsum placeholder text att visa på demoprofiler.");
         isOnline = false;
         isLoaded = true;
-        list.add(new AndroidInfo(0,"Row 1"));
-        list.add(new AndroidInfo(0,"Row 2"));
-        list.add(new AndroidInfo(0,"Row 3"));
     }
 
     @Bindable
@@ -102,8 +100,8 @@ public class ProfileViewModel extends BaseObservable {
         }, 1000);
     }
 
-    public void bottomButtonClicked(View view) {
-        list.add(new AndroidInfo(0,"Row " + (list.size()+1)));
+    public void bottomButtonClicked() {
+        list.add(new AndroidInfo(R.drawable.cat,"Row " + (list.size()+1)));
     }
 /*
         load(new Runnable() {
@@ -131,7 +129,7 @@ public class ProfileViewModel extends BaseObservable {
         view.setLayoutManager(layoutManager);
         view.setAdapter(new AndroidInfoAdapter(list));
     }
-    @BindingAdapter("app:imageRes")
+    @BindingAdapter("bind:imageRes")
     public static void bindImage(ImageView view, int r) {
         view.setImageResource(r);
     }

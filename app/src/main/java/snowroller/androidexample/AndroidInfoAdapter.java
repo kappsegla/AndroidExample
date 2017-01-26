@@ -14,7 +14,8 @@ package snowroller.androidexample;
         import snowroller.androidexample.ViewModels.AndroidInfo;
         import snowroller.androidexample.databinding.ListItemBinding;
 
-public class AndroidInfoAdapter extends RecyclerView.Adapter<AndroidInfoAdapter.ViewHolder> {
+public class AndroidInfoAdapter extends
+        RecyclerView.Adapter<AndroidInfoAdapter.ViewHolder> {
 
     public class ViewHolder extends RecyclerView.ViewHolder {
     public ListItemBinding binder;
