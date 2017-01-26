@@ -30,6 +30,7 @@
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginStart="16dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:id="@+id/listView" />
+        android:id="@+id/listView"
+        />
 
 </android.support.constraint.ConstraintLayout>

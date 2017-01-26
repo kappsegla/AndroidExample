@@ -3,7 +3,9 @@ package snowroller.androidexample.listviewexample;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -15,8 +17,8 @@ import snowroller.androidexample.R;
 
 public class ListViewActivity extends AppCompatActivity {
 
-    ArrayList<String> listItems = new ArrayList<String>();
-    ArrayAdapter<String> adapter;
+    ArrayList<ListItem> listItems = new ArrayList<ListItem>();
+    ItemAdapter adapter;
     private ListView myListView;
     private FloatingActionButton fab;
 
@@ -28,11 +30,19 @@ public class ListViewActivity extends AppCompatActivity {
         myListView = (ListView) findViewById(R.id.listView);
         fab = (FloatingActionButton) findViewById(R.id.floatingActionButton);
 
-        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,
+        adapter = new ItemAdapter(this, android.R.layout.simple_list_item_1,
            listItems);
 
         myListView.setAdapter(adapter);
-
+        //SetOnItemClickListener for the ListView
+        myListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> listView, View view,
+                                    int position, long id) {
+                listItems.remove(position);
+                adapter.notifyDataSetChanged();
+            }
+        });
 //        fab.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view)
@@ -47,7 +57,7 @@ public class ListViewActivity extends AppCompatActivity {
     public void fabClicked(View view)
     {
         SimpleDateFormat dateformat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-        listItems.add(dateformat.format(new Date()));
+        listItems.add( new ListItem("Hello there: ",  dateformat.format(new Date())));
         adapter.notifyDataSetChanged();
     }
 }
