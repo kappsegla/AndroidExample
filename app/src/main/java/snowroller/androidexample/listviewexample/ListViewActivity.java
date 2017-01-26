@@ -30,7 +30,7 @@ public class ListViewActivity extends AppCompatActivity {
         myListView = (ListView) findViewById(R.id.listView);
         fab = (FloatingActionButton) findViewById(R.id.floatingActionButton);
 
-        adapter = new ItemAdapter(this, android.R.layout.simple_list_item_1,
+        adapter = new ItemAdapter(this, R.layout.special_list_item,
            listItems);
 
         myListView.setAdapter(adapter);
