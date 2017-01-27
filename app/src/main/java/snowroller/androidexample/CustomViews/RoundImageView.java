@@ -1,4 +1,4 @@
-package snowroller.androidexample;
+package snowroller.androidexample.CustomViews;
 
 import android.content.Context;
 import android.graphics.Bitmap;

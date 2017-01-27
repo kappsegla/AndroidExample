@@ -11,11 +11,11 @@ package snowroller.androidexample;
         import android.view.ViewGroup;
         import android.support.v7.widget.RecyclerView;
 
-        import snowroller.androidexample.ViewModels.AndroidInfo;
+        import snowroller.androidexample.ViewModels.InfoViewModel;
         import snowroller.androidexample.databinding.ListItemBinding;
 
-public class AndroidInfoAdapter extends
-        RecyclerView.Adapter<AndroidInfoAdapter.ViewHolder> {
+public class InfoViewModelAdapter extends
+        RecyclerView.Adapter<InfoViewModelAdapter.ViewHolder> {
 
     public class ViewHolder extends RecyclerView.ViewHolder {
     public ListItemBinding binder;
@@ -26,9 +26,9 @@ public class AndroidInfoAdapter extends
     }
     }
 
-    private ObservableArrayList<AndroidInfo> list;
+    private ObservableArrayList<InfoViewModel> list;
 
-    public AndroidInfoAdapter(ObservableArrayList<AndroidInfo> l) {
+    public InfoViewModelAdapter(ObservableArrayList<InfoViewModel> l) {
     list = l;
     }
 
@@ -40,7 +40,7 @@ public class AndroidInfoAdapter extends
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-    final AndroidInfo info = list.get(position);
+    final InfoViewModel info = list.get(position);
     holder.binder.setInfo(info);
     holder.binder.executePendingBindings();
     }

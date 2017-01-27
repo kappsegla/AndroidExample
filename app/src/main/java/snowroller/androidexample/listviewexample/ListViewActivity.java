@@ -30,8 +30,7 @@ public class ListViewActivity extends AppCompatActivity {
         myListView = (ListView) findViewById(R.id.listView);
         fab = (FloatingActionButton) findViewById(R.id.floatingActionButton);
 
-        adapter = new ItemAdapter(this, R.layout.special_list_item,
-           listItems);
+        adapter = new ItemAdapter(this, listItems);
 
         myListView.setAdapter(adapter);
         //SetOnItemClickListener for the ListView
@@ -43,21 +42,13 @@ public class ListViewActivity extends AppCompatActivity {
                 adapter.notifyDataSetChanged();
             }
         });
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view)
-//            {
-//                addListItem();
-//            }
-//        }
-//        );
     }
 
     //Called when clicked on fab button. Bounded in layoutfile
     public void fabClicked(View view)
     {
         SimpleDateFormat dateformat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-        listItems.add( new ListItem("Hello there: ",  dateformat.format(new Date())));
+        listItems.add( new ListItem("Hello there: ",  new Date()));
         adapter.notifyDataSetChanged();
     }
 }

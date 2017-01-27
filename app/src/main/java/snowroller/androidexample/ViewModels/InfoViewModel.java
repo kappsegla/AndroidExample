@@ -4,11 +4,13 @@ package snowroller.androidexample.ViewModels;
  * Created by Martin on 2017-01-25.
  */
 
-public class AndroidInfo {
+//View model for 
+public class InfoViewModel {
+    
     public int iconResource; /* Resource id for the image */
-    public String name; /* Name */
-    public AndroidInfo(int r, String n) {
+    public String text; /* Name */
+    public InfoViewModel(int r, String n) {
         iconResource = r;
-        name = n;
+        text = n;
     }
 }

@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:bind="http://schemas.android.com/apk/res-auto">
     <data>
-        <variable name="info" type="snowroller.androidexample.ViewModels.AndroidInfo"/>
+        <variable name="info" type="snowroller.androidexample.ViewModels.InfoViewModel"/>
     </data>
     <LinearLayout
     android:orientation="horizontal"
@@ -21,6 +21,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_weight="1"
-    android:text="@{info.name}"/>
+    android:text="@{info.text}"/>
     </LinearLayout>
 </layout>

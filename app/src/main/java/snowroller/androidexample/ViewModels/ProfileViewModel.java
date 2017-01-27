@@ -5,23 +5,16 @@ import android.databinding.Bindable;
 import android.databinding.BindingAdapter;
 import android.databinding.BindingConversion;
 import android.databinding.ObservableArrayList;
-import android.databinding.ObservableBoolean;
 import android.databinding.ObservableField;
 import android.os.Handler;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-import android.widget.ListAdapter;
-import android.widget.ListView;
 
 import com.android.databinding.library.baseAdapters.BR;
 
-import java.util.ArrayList;
-
-import snowroller.androidexample.AndroidInfoAdapter;
+import snowroller.androidexample.InfoViewModelAdapter;
 import snowroller.androidexample.R;
 
 /**
@@ -36,7 +29,7 @@ public class ProfileViewModel extends BaseObservable {
     public final ObservableField<String> profileText = new ObservableField<>();
 
     //For RecyclerView
-    public ObservableArrayList<AndroidInfo> list = new ObservableArrayList<>();
+    public ObservableArrayList<InfoViewModel> list = new ObservableArrayList<>();
 
     private String name;
     private boolean isOnline;
@@ -101,7 +94,7 @@ public class ProfileViewModel extends BaseObservable {
     }
 
     public void bottomButtonClicked() {
-        list.add(new AndroidInfo(R.drawable.cat,"Row " + (list.size()+1)));
+        list.add(new InfoViewModel(R.drawable.cat,"Row " + (list.size()+1)));
     }
 /*
         load(new Runnable() {
@@ -124,10 +117,10 @@ public class ProfileViewModel extends BaseObservable {
     }
 
     @BindingAdapter("app:items")
-    public static void bindList(RecyclerView view, ObservableArrayList<AndroidInfo> list) {
+    public static void bindList(RecyclerView view, ObservableArrayList<InfoViewModel> list) {
         LinearLayoutManager layoutManager = new LinearLayoutManager(view.getContext());
         view.setLayoutManager(layoutManager);
-        view.setAdapter(new AndroidInfoAdapter(list));
+        view.setAdapter(new InfoViewModelAdapter(list));
     }
     @BindingAdapter("bind:imageRes")
     public static void bindImage(ImageView view, int r) {

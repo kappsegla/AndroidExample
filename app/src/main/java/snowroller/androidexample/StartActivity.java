@@ -6,13 +6,15 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
-public class Main2Activity extends AppCompatActivity {
+import snowroller.androidexample.listviewexample.ListViewActivity;
+
+public class StartActivity extends AppCompatActivity {
 
     private static String TAG = "AndroidExample";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main2);
+        setContentView(R.layout.start_activity);
 
         Log.i(TAG,"2: onCreate");
         Intent i = getIntent();
@@ -30,9 +32,17 @@ public class Main2Activity extends AppCompatActivity {
 
     public void buttonClicked(View v)
     {
-        Log.i(TAG,"Button clicked in Main2Activity");
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
+        Log.i(TAG,"Button clicked in StartActivity");
+        if( v.getId() == R.id.start_main_view_activity_button)
+        {
+            Intent intent = new Intent(this, MainViewActivity.class);
+            startActivity(intent);
+        }
+        if(v.getId() == R.id.start_list_view_example_button)
+        {
+            Intent intent = new Intent(this, ListViewActivity.class);
+            startActivity(intent);
+        }
     }
 
     @Override

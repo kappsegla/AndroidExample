@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -17,47 +18,61 @@ import java.util.List;
  */
 import snowroller.androidexample.R;
 
-public class ItemAdapter extends ArrayAdapter {
+public class ItemAdapter extends BaseAdapter {
 
-    private ArrayList<ListItem> objects;
+    private List<ListItem> objects;
+    private Context context;
+    private LayoutInflater inflater;
 
-    public ItemAdapter(Context context, int resource, ArrayList<ListItem> objects) {
-        super(context, resource, objects);
+    public ItemAdapter(Context context, List<ListItem> objects) {
+        this.context = context;
         this.objects = objects;
+        this.inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+    }
+
+    @Override
+    public int getCount() {
+        //Return number of items in list so our View knows how many posts should be displayed
+        return objects.size();
+    }
+
+    @Override
+    public Object getItem(int position) {
+        //Return the object reference at specified position
+        return objects.get(position);
+    }
+
+    @Override
+    public long getItemId(int position) {
+        //Can be implemented to return a unique id for the specified position.
+        //Example database id. Shortens the code from
+        //adapter.getItem(pos).getId to adapter.getId(pos)
+        return 0;
     }
 
     @NonNull
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        // assign the view we are converting to a local variable
         View v = convertView;
 
         // first check to see if the view is null. if so, we have to inflate it.
-        // to inflate it basically means to render, or show, the view.
         if (v == null) {
-            LayoutInflater inflater = (LayoutInflater) getContext()
-                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            v = inflater.inflate(R.layout.special_list_item, null);
+            v = inflater.inflate(R.layout.special_list_item, parent, false);
         }
 
+        //Get the listitem to show
         ListItem i = objects.get(position);
 
         if (i != null) {
-            // This is how you obtain a reference to the TextViews.
-            // These TextViews are created in the XML files we defined.
-            TextView tt = (TextView) v.findViewById(R.id.textView7);
-            TextView ttd = (TextView) v.findViewById(R.id.textView8);
+            //Get references to view objects in our xml
+            TextView textView7 = (TextView) v.findViewById(R.id.textView7);
+            TextView textView8 = (TextView) v.findViewById(R.id.textView8);
 
-            // check to see if each individual textview is null.
-            // if not, assign some text!
-            if (tt != null) {
-                tt.setText(i.text);
-            }
-            if (ttd != null) {
-                ttd.setText(i.datetime);
-            }
+            textView7.setText(i.text);
+            textView8.setText(i.datetime.toString());
+
         }
-            // the view must be returned to our activity
+            // Return the view
             return v;
         }
 }
