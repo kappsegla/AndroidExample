@@ -6,16 +6,18 @@ import android.databinding.BindingAdapter;
 import android.databinding.BindingConversion;
 import android.databinding.ObservableArrayList;
 import android.databinding.ObservableField;
+import android.databinding.ObservableList;
 import android.os.Handler;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
 import com.android.databinding.library.baseAdapters.BR;
 
 import snowroller.androidexample.InfoViewModelAdapter;
-import snowroller.androidexample.Models.DownloadAsync;
+import snowroller.androidexample.Models.Model;
 import snowroller.androidexample.R;
 
 /**
@@ -36,6 +38,8 @@ public class ProfileViewModel extends BaseObservable {
     private boolean isOnline;
     private boolean isLoaded;
 
+    private Model model;
+
     public ProfileViewModel(String name, String realname)
     {
         this.name = name;
@@ -43,6 +47,37 @@ public class ProfileViewModel extends BaseObservable {
         this.profileText.set("Lorum ipsum placeholder text att visa på demoprofiler.");
         isOnline = false;
         isLoaded = true;
+        model = Model.getInstance();
+
+        model.getList().addOnListChangedCallback(new ObservableList.OnListChangedCallback<ObservableList<String>>() {
+            @Override
+            public void onChanged(ObservableList<String> strings) {
+            }
+
+            @Override
+            public void onItemRangeChanged(ObservableList<String> strings, int i, int i1) {
+
+            }
+
+            @Override
+            public void onItemRangeInserted(ObservableList<String> strings, int i, int i1) {
+                list.clear();
+                for (String s : strings) {
+                    list.add(new InfoViewModel(R.drawable.cat, s));
+                }
+            }
+
+            @Override
+            public void onItemRangeMoved(ObservableList<String> strings, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onItemRangeRemoved(ObservableList<String> strings, int i, int i1) {
+
+            }
+        });
+
     }
 
     @Bindable
@@ -95,9 +130,7 @@ public class ProfileViewModel extends BaseObservable {
     }
 
     public void bottomButtonClicked() {
-        DownloadAsync downloadAsync = new DownloadAsync();
-        downloadAsync.execute("url in the future");
-
+       model.updateRepos();
 
         //list.add(new InfoViewModel(R.drawable.cat,"Row " + (list.size()+1)));
     }
