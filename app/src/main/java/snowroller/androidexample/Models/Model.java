@@ -72,7 +72,7 @@ public class Model {
                         JSONObject jsonObject = jsonArray.getJSONObject(i);
                         String reponame = jsonObject.getString("name");
                         list.add(reponame);
-                        Thread.sleep(1000);
+
                     }
 
                     for (String s : list) {
