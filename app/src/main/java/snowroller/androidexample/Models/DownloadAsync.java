@@ -3,18 +3,25 @@ package snowroller.androidexample.Models;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Martin on 2017-02-02.
  */
 
 public class DownloadAsync extends AsyncTask<String, Void, Object>{
+
+    private List<String> list = new ArrayList<String>();
 
     @Override
     protected Object doInBackground(String... params) {
@@ -36,10 +43,25 @@ public class DownloadAsync extends AsyncTask<String, Void, Object>{
             if(response == 200) {
                 String json = getJson(conn.getInputStream());
 
+                //JSONObject jsonObject= new JSONObject(json);
+                JSONArray jsonArray = new JSONArray(json);
 
+                for(int i = 0; i < jsonArray.length(); i++)
+                {
+                    JSONObject jsonObject = jsonArray.getJSONObject(i);
+                    String reponame = jsonObject.getString("name");
+                    list.add(reponame);
+                }
+
+                for (String s : list ) {
+                    Log.i("AndroidExample", s);
+                }
             }
         }catch (Exception e)
         {
+            Log.i("AndroidExample", "Error");
+        }
+        finally {
 
         }
         //Läs json data och läs ut information vi vill ha
@@ -56,6 +78,8 @@ public class DownloadAsync extends AsyncTask<String, Void, Object>{
         while( (line = reader.readLine())!= null) {
             builder.append(line + '\n');
         }
+        //Should be placed in finally
+        stream.close();
         return builder.toString();
     }
 
