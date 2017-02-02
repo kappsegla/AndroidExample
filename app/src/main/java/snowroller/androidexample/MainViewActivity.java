@@ -18,7 +18,7 @@ public class MainViewActivity extends AppCompatActivity {
 
         ActivityMainViewBinding binding =
                 DataBindingUtil.setContentView(this,R.layout.activity_main_view);
-
+        //ActivityMainViewBinding.inflate()
         binding.setProfile(profile);
     }
 }

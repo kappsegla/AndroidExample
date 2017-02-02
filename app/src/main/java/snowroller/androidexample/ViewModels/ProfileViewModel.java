@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import com.android.databinding.library.baseAdapters.BR;
 
 import snowroller.androidexample.InfoViewModelAdapter;
+import snowroller.androidexample.Models.DownloadAsync;
 import snowroller.androidexample.R;
 
 /**
@@ -94,20 +95,11 @@ public class ProfileViewModel extends BaseObservable {
     }
 
     public void bottomButtonClicked() {
-        list.add(new InfoViewModel(R.drawable.cat,"Row " + (list.size()+1)));
-    }
-/*
-        load(new Runnable() {
-        @Override
-        public void run() {
-            setOnline(!isOnline());
-            setLoaded(true);
-        }
-    });
-*/
-  private void load(Runnable onLoaded) {
-        setLoaded(false);
-        new Handler().postDelayed(onLoaded, LOADING_SHORT);
+        DownloadAsync downloadAsync = new DownloadAsync();
+        downloadAsync.execute("url in the future");
+
+
+        //list.add(new InfoViewModel(R.drawable.cat,"Row " + (list.size()+1)));
     }
 
     //Replaces ? View.VISIBLE : View.GONE
@@ -118,8 +110,9 @@ public class ProfileViewModel extends BaseObservable {
 
     @BindingAdapter("app:items")
     public static void bindList(RecyclerView view, ObservableArrayList<InfoViewModel> list) {
-        LinearLayoutManager layoutManager = new LinearLayoutManager(view.getContext());
-        view.setLayoutManager(layoutManager);
+        //Recyclerview layout setting moved to xml. Shouldn't be here.
+        //LinearLayoutManager layoutManager = new LinearLayoutManager(view.getContext());
+        //view.setLayoutManager(layoutManager);
         view.setAdapter(new InfoViewModelAdapter(list));
     }
     @BindingAdapter("bind:imageRes")
