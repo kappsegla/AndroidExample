@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
+import snowroller.androidexample.BindingTest.BindingTestActivity;
 import snowroller.androidexample.listviewexample.ListViewActivity;
 
 public class StartActivity extends AppCompatActivity {
@@ -41,6 +42,11 @@ public class StartActivity extends AppCompatActivity {
         if(v.getId() == R.id.start_list_view_example_button)
         {
             Intent intent = new Intent(this, ListViewActivity.class);
+            startActivity(intent);
+        }
+        if(v.getId() == R.id.start_bindingtest_activity)
+        {
+            Intent intent = new Intent(this, BindingTestActivity.class);
             startActivity(intent);
         }
     }

@@ -152,6 +152,7 @@ public class ProfileViewModel extends BaseObservable {
     public static void bindImage(ImageView view, int r) {
         view.setImageResource(r);
     }
+
 }
 
 

@@ -24,9 +24,19 @@
         android:text="Start ListView Example"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/start_main_view_activity_button"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="31dp"
         android:id="@+id/start_list_view_example_button"
-        android:onClick="buttonClicked"/>
+        android:onClick="buttonClicked"
+        android:layout_below="@+id/start_main_view_activity_button"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:text="Start BindingTest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:id="@+id/start_bindingtest_activity"
+        android:onClick="buttonClicked"
+        android:layout_below="@+id/start_list_view_example_button"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>

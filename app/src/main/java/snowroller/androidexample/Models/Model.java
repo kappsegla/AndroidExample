@@ -20,7 +20,8 @@ import java.util.List;
  * Created by Martin on 2017-02-02.
  */
 
-public class Model {
+public class Model
+{
 
     private static final Model model = new Model();
 
