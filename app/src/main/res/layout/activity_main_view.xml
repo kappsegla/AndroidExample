@@ -6,7 +6,6 @@
     <variable
         name="profile"
         type="snowroller.androidexample.ViewModels.ProfileViewModel"/>
-    <import type="android.view.View"/>
 </data>
 <android.support.constraint.ConstraintLayout
     android:layout_width="match_parent"

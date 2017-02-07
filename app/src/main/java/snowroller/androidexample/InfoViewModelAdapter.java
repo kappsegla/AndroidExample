@@ -7,6 +7,7 @@ package snowroller.androidexample;
         import android.databinding.DataBindingUtil;
         import android.databinding.ObservableArrayList;
         import android.support.design.widget.Snackbar;
+        import android.util.Log;
         import android.view.LayoutInflater;
         import android.view.View;
         import android.view.ViewGroup;
@@ -56,6 +57,7 @@ public class InfoViewModelAdapter extends
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
+        Log.i("AndroidExample", "Binder pos:" + position);
         final InfoViewModel info = list.get(position);
         holder.binder.setInfo(info);
         holder.binder.executePendingBindings();
