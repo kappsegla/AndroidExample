@@ -1,5 +1,6 @@
 package snowroller.androidexample.ViewModels;
 
+import android.content.Intent;
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
 import android.databinding.BindingAdapter;
@@ -16,9 +17,12 @@ import android.widget.ImageView;
 
 import com.android.databinding.library.baseAdapters.BR;
 
+import snowroller.androidexample.Helpers.Notifications;
 import snowroller.androidexample.InfoViewModelAdapter;
 import snowroller.androidexample.Models.Model;
+import snowroller.androidexample.MyService;
 import snowroller.androidexample.R;
+import snowroller.androidexample.Services.TestService;
 
 /**
  * Created by Martin on 2017-01-25.
@@ -113,8 +117,10 @@ public class ProfileViewModel extends BaseObservable {
 
     public void leftButtonClicked(View view)
     {
-       // Log.i("AndroidExample","LeftButtonClicked");
-        this.profileText.set("Ny text att förundras över");
+        Intent intent = new Intent(view.getContext(), TestService.class);
+        view.getContext().startService(intent);
+
+        //Notifications.showSimpleNotification(view.getContext());
     }
 
     public void rightButtonClicked(View view) {
@@ -131,7 +137,6 @@ public class ProfileViewModel extends BaseObservable {
 
     public void bottomButtonClicked() {
        model.updateRepos();
-
         //list.add(new InfoViewModel(R.drawable.cat,"Row " + (list.size()+1)));
     }
 

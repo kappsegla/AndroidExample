@@ -27,9 +27,22 @@
         </activity>
         <activity
             android:name=".MainViewActivity"
-            android:windowSoftInputMode="stateUnchanged"></activity>
-        <activity android:name=".listviewexample.ListViewActivity"></activity>
-        <activity android:name=".BindingTest.BindingTestActivity"></activity>
+            android:windowSoftInputMode="stateUnchanged" />
+        <activity android:name=".listviewexample.ListViewActivity" />
+        <activity android:name=".BindingTest.BindingTestActivity" />
+
+        <service android:name=".Services.TestService"
+            android:enabled="true"
+            android:exported="false">
+        </service>
+
+
+
+
+        <service
+            android:name=".MyService"
+            android:enabled="true"
+            android:exported="false"></service>
     </application>
 
 </manifest>
